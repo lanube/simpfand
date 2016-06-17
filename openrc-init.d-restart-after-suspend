@@ -1,0 +1,19 @@
+##############
+#Instalation notes
+#openrc only
+#1. Create file /etc/pm/sleep.d/99-simpfand-restart.sh        with this content
+#2. chmod +x /etc/pm/sleep.d/99-simpfand-restart.sh 
+#3. thats all, simpfand will back after suspend/hibernation.
+#gentoo tested
+##############
+
+
+#!/bin/bash
+case "$1" in
+    thaw|resume)
+        /etc/init.d/simpfand restart 2>/dev/null
+        ;;
+    *)
+        ;;
+esac
+exit $?
